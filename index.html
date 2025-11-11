@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palji Bakery - Baked with Love</title>
+    
+    <!-- CSS for Styling -->
+    <style>
+        /* Importing nice fonts from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+
+        /* Basic styles for the whole page */
+        html {
+            scroll-behavior: smooth; /* This makes the page scroll smoothly when clicking links */
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            background-color: #fdfbf7; /* A warm, cream color */
+            color: #5d4037; /* A dark brown for text */
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #ffffff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; /* Sticks the header to the top */
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #d84315; /* A nice orange accent color */
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5d4037;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #d84315;
+        }
+
+        /* Main content area */
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Hero section with the new background image */
+        .hero {
+            height: 100vh; /* Makes the section full screen height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            /* This is the background image */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Creates a parallax effect */
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background-color: #d84315;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #bf360c;
+        }
+
+        /* Section Title Style */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #5d4037;
+        }
+
+        /* Full Menu Section */
+        .menu-section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .menu-category {
+            margin-bottom: 40px;
+        }
+
+        .menu-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #d84315;
+            border-bottom: 2px solid #f0e4d7;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .menu-item-details {
+            flex: 1;
+        }
+
+        .menu-item-name {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .menu-item-description {
+            font-size: 0.9em;
+            color: #795548;
+            font-style: italic;
+        }
+
+        .menu-item-price {
+            font-weight: bold;
+            color: #5d4037;
+            margin-left: 20px;
+        }
+
+        /* About Section */
+        .about-section {
+            text-align: center;
+        }
+        
+        .about-section p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1em;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #f0e4d7;
+            border-radius: 5px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1em;
+        }
+
+        .contact-form button {
+            background-color: #d84315;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #bf360c;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #5d4037;
+            color: #f0e4d7;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Navigation -->
+    <header class="header">
+        <a href="#home" class="logo">Palji Bakeryy</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section with Background -->
+        <section id="home" class="hero">
+            <h1>Baked with Love, Served with a Smile</h1>
+            <p>Freshly baked goods, made with the finest ingredients and a whole lot of passion.</p>
+            <a href="#menu" class="cta-button">View Our Menu</a>
+        </section>
+
+        <!-- Full Menu Section -->
+        <section id="menu" class="menu-section">
+            <h2 class="section-title">Our Menu</h2>
+
+            <div class="menu-category">
+                <h3>Cakes & Pastries</h3>
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Classic Tiramisu</span>
+                        <p class="menu-item-description">Layers of coffee-soaked ladyfingers and mascarpone cream.</p>
+                    </div>
+                    <span class="menu-item-price">$6.50</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Chocolate Lava Cake</span>
+                        <p class="menu-item-description">Warm chocolate cake with a molten center, served with vanilla ice cream.</p>
+                    </div>
+                    <span class="menu-item-price">$7.00</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Almond Croissant</span>
+                        <p class="menu-item-description">Buttery croissant filled with frangipane and topped with sliced almonds.</p>
+                    </div>
+                    <span class="menu-item-price">$4.50</span>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Artisan Breads</h3>
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Sourdough Loaf</span>
+                        <p class="menu-item-description">Our signature tangy bread with a perfect crispy crust.</p>
+                    </div>
+                    <span class="menu-item-price">$5.00</span>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Whole Wheat Multigrain</span>
+                        <p class="menu-item-description">A hearty and healthy bread packed with seeds and grains.</p>
+                    </div>
+                    <span class="menu-item-price">$5.50</span>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Beverages</h3>
+                <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Freshly Brewed Coffee</span>
+                        <p class="menu-item-description">A rich, aromatic blend to start your day right.</p>
+                    </div>
+                    <span class="menu-item-price">$2.50</span>
+                </div>
+                 <div class="menu-item">
+                    <div class="menu-item-details">
+                        <span class="menu-item-name">Hot Chocolate</span>
+                        <p class="menu-item-description">Creamy, decadent, and made with real chocolate.</p>
+                    </div>
+                    <span class="menu-item-price">$3.50</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="about-section">
+            <h2 class="section-title">About Palji Bakeryy</h2>
+            <p>Palji Bakeryy started from a simple love for bringing people together through the joy of food. Our founder, Palji, believed that a warm, freshly baked treat could turn any day around. Using time-honored recipes and the best local ingredients, we pour our hearts into every single item we bake. We're not just a bakery; we're a part of your community, here to make your moments a little sweeter.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Get in Touch</h2>
+            <p style="text-align:center; margin-bottom: 30px;">Have a question or want to place a custom order? We'd love to hear from you!</p>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2023 Palji Bakeryy. All Rights Reserved.</p>
+        <p>123 Sweet Street, Flavor Town | (123) 456-7890 | hello@paljibakeryy.com</p>
+    </footer>
+
+</body>
+</html>
